@@ -18,13 +18,44 @@ function FilmList() {
     // stato array filtrato
     const [filterGenre, setFilterGenre] = useState(films);
     // stato array di ricerca
-    const [searchGenre, setSearchGenre] = useState(filterGenre.genre)
+    const [searchGenre, setSearchGenre] = useState("")
+
+    // useEffect(() => {
+
+    //     console.log("films", films);
+    //     setSelectGenre(films)
+    //     console.log("Select", selectGenre);
+
+
+    //     if (searchGenre !== "") {
+    //         setSelectGenre(
+    //             selectGenre.filter(i => {
+    //                 console.log(i);
+    //                 console.log(searchGenre);
+    //                 return i.genre === searchGenre
+    //                 // return i.includes(searchGenre)
+    //             }
+    //             ))
+    //     }
+    // }, [searchGenre]);
 
     useEffect(() => {
-        setFilterGenre(
-            selectGenre.filter(genre => {
-                return genre.includes(searchGenre)
-            }))
+
+        console.log("films 2", films);
+        setSelectGenre(films)
+        console.log("Select 2", selectGenre);
+
+
+        if (searchGenre !== "") {
+            setFilterGenre(
+                selectGenre.filter(i => {
+                    console.log(i);
+                    console.log(searchGenre);
+                    return i.genre === searchGenre
+                    // return i.includes(searchGenre)
+                }
+                ))
+        }
     }, [searchGenre]);
 
     return (
@@ -32,7 +63,7 @@ function FilmList() {
             <select name="film"
                 onChange={(e) => { setSearchGenre(e.target.value) }}
             >
-                <option value={searchGenre} >Fantascienza</option>
+                <option >Fantascienza</option>
                 <option >Thriller</option>
                 <option >Azione</option>
                 <option >Romantico</option>
