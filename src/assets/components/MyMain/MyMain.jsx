@@ -2,7 +2,7 @@ import FilmList from "./FilmList"
 
 function MyMain() {
     return (
-        <section>
+        <section className="container">
             <FilmList />
         </section>
 

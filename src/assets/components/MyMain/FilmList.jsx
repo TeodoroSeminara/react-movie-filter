@@ -20,25 +20,6 @@ function FilmList() {
     const [optionFilm, setOptionFilm] = useState("")
 
 
-    // // stato dell'array completo
-    // const [selectGenre, setSelectGenre] = useState(films);
-    // // stato array filtrato
-    // const [filterGenre, setFilterGenre] = useState([]);
-    // // stato array di ricerca
-    // const [optionFilm, setOptionFilm] = useState("")
-
-    // useEffect(() => {
-    //     if (optionFilm !== "") {
-    //         setFilterGenre(
-    //             selectGenre.filter(i => {
-    //                 return i.genre === optionFilm
-    //             }
-    //             ))
-    //     } else {
-    //         setFilterGenre(selectGenre);
-    //     }
-    // }, [optionFilm]);
-
     useEffect(() => {
         let result = films;
         if (selectGenre !== "") {
