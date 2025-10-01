@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 function FilmList() {
 
+    // Array 
     const films = [
         { title: 'Inception', genre: 'Fantascienza' },
         { title: 'Il Padrino', genre: 'Thriller' },
@@ -12,29 +13,40 @@ function FilmList() {
         { title: 'Pulp Fiction', genre: 'Thriller' },
     ];
 
+    // stato dell'array completo
     const [selectGenre, setSelectGenre] = useState(films);
-    const [filterGenre, setFilterGenre] = useState();
+    // stato array filtrato
+    const [filterGenre, setFilterGenre] = useState(films);
+    // stato array di ricerca
+    const [searchGenre, setSearchGenre] = useState(filterGenre.genre)
 
-    useEffect{() => {
+    useEffect(() => {
         setFilterGenre(
-            selectGenre.find( genre => {
-                return 
-            })
-        )
-    }
-
-    }
+            selectGenre.filter(genre => {
+                return genre.includes(searchGenre)
+            }))
+    }, [searchGenre]);
 
     return (
-        <select name="ciao">
-            {selectGenre.map((film, i) => (
-                <option value={film.genre} key={i}>{film.genre}
-                </option>
-            ))}
+        <>
+            <select name="film"
+                onChange={(e) => { setSearchGenre(e.target.value) }}
+            >
+                <option value={searchGenre} >Fantascienza</option>
+                <option >Thriller</option>
+                <option >Azione</option>
+                <option >Romantico</option>
+            </select>
 
-        </select>
-
-
+            <ul>
+                {filterGenre.map((film, i) => (
+                    <li value={film.genre}
+                        key={i}>
+                        {film.title}, il Genere è:{film.genre}
+                    </li>
+                ))}
+            </ul>
+        </>
     )
 }
 
